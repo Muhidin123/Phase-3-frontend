@@ -1,4 +1,4 @@
-const URL = "http://localhost:3000/users";
+const URL = "https://shielded-mountain-86289.herokuapp.com/";
 
 let button = document.createElement("button");
 
@@ -76,14 +76,12 @@ const MainMenu = new Phaser.Class({
 
         this.add.image(0, 0, "title_screen").setOrigin(0, 0);
 
-        
-
         playButton = this.add.image(
             this.game.config.width / 2,
             this.game.config.height / 2,
             "button-bg"
         );
-        playButton.setScale(.75);
+        playButton.setScale(0.75);
 
         const instruction = this.add
             .text(
@@ -91,7 +89,10 @@ const MainMenu = new Phaser.Class({
                 320 * 1.7,
                 "Move with arrow keys\nCrouch with Down Arrow\nJump with Spacebar\nShoot with E key",
                 {
-                    fontFamily: 'pixel', fontSize: 15, color: '#ffffff', align: 'left'
+                    fontFamily: "pixel",
+                    fontSize: 15,
+                    color: "#ffffff",
+                    align: "left",
                 }
             )
             .setOrigin(0.5);
@@ -100,18 +101,23 @@ const MainMenu = new Phaser.Class({
         const Title = this.add.text(
             this.game.config.width / 7,
             this.game.config.height / 6,
-            'SPACE TRIALS', {
-            fontFamily: 'pixel', fontSize: 75, color: '#ffd000', align: 'center'
-          })
+            "SPACE TRIALS",
+            {
+                fontFamily: "pixel",
+                fontSize: 75,
+                color: "#ffd000",
+                align: "center",
+            }
+        );
 
-          this.tweens.add({
+        this.tweens.add({
             targets: Title,
             alpha: { from: 1, to: 0.5 },
-            ease: 'Sine.InOut',
+            ease: "Sine.InOut",
             duration: 1000,
             repeat: -1,
-            yoyo: true
-          });
+            yoyo: true,
+        });
 
         // .setDepth(1);
 
@@ -120,7 +126,7 @@ const MainMenu = new Phaser.Class({
             this.game.config.height / 2,
             "button-text"
         );
-        text.setScale(.75);
+        text.setScale(0.75);
 
         let container = this.add.container(0, 0).setDepth(1);
 
@@ -151,13 +157,15 @@ const MainMenu = new Phaser.Class({
 
     loadFont(name, url) {
         let newFont = new FontFace(name, `url(${url})`);
-        newFont.load().then(function (loaded) {
-            document.fonts.add(loaded);
-        }).catch(function (error) {
-            return error;
-        });
-    }
-
+        newFont
+            .load()
+            .then(function (loaded) {
+                document.fonts.add(loaded);
+            })
+            .catch(function (error) {
+                return error;
+            });
+    },
 });
 
 const UI = new Phaser.Class({
